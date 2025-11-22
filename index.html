@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scented Luxe - Lattafa Women's Perfumes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: var(--rose-gold); margin: 0;">Product Details</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-detail-grid">
+                    <div>
+                        <div class="product-detail-image" id="modalProductImage">
+                            <img src="" alt="" id="modalProductImg">
+                        </div>
+                    </div>
+                    <div class="product-detail-info">
+                        <h2 id="modalProductName">Product Name</h2>
+                        <p class="product-detail-brand" id="modalProductBrand">Lattafa</p>
+                        <div class="product-detail-rating">
+                            <span class="stars" id="modalProductStars">★★★★★</span>
+                            <span class="rating-count" id="modalProductRating">(4.8)</span>
+                            <span class="rating-count" id="modalProductReviews">156 reviews</span>
+                        </div>
+                        <div class="product-detail-price" id="modalProductPrice">JMD $0.00</div>
+                        
+                        <div class="product-description">
+                            <h4>Description:</h4>
+                            <p id="modalProductDescription">Product description will appear here.</p>
+                        </div>
+
+                        <button class="btn" onclick="addToCart()" style="width: 100%; margin-top: 1rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="reviews-section">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--dark-gray);">Customer Reviews</h3>
+                    <div id="reviewsContainer">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <div>
+                    <h1>SCENTED LUXE</h1>
+                    <p class="tagline">Lattafa Women's Fragrances</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                    <li>
+                        <a href="#cart" class="nav-link cart-link" onclick="showPage('cart')">
+                            Cart
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </a>
+                    </li>
+                    <li><a href="#about" class="nav-link" onclick="showPage('about')">About</a></li>
+                    <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page-section">
+            <div class="hero">
+                <h2>LATTAFA COLLECTION</h2>
+                <p>Premium women's fragrances from Lattafa</p>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--dark-gray); font-weight: 300; letter-spacing: 2px;">OUR COLLECTION</h2>
+            
+            <div class="product-grid" id="productGrid">
+               
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login" class="page-section active">
+            <div class="form-container">
+                <h2>Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Sign In</button>
+                    <p style="text-align: center; margin-top: 1.5rem;">
+                        Don't have an account? <a href="#register" onclick="showPage('register')" style="color: var(--rose-gold);">Register here</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Registration Page -->
+        <section id="register" class="page-section">
+            <div class="form-container">
+                <h2>Join Scented Luxe</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newusername">Username</label>
+                        <input type="text" id="newusername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newpassword">Password</label>
+                        <input type="password" id="newpassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword">Confirm Password</label>
+                        <input type="password" id="confirmpassword" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Create Account</button>
+                    <p style="text-align: center; margin-top: 1.5rem;">
+                        Already have an account? <a href="#login" onclick="showPage('login')" style="color: var(--rose-gold);">Login here</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart" class="page-section">
+            <div class="cart-container">
+                <h2 style="margin-bottom: 2rem; color: var(--dark-gray); font-weight: 300; letter-spacing: 2px;">SHOPPING CART</h2>
+                <div id="cartItems">
+                </div>
+                <div class="cart-summary" id="cartSummary">
+                    
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="clearCart()">Clear All</button>
+                    <button class="btn" onclick="showPage('checkout')">Proceed to Checkout</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Page -->
+        <section id="checkout" class="page-section">
+            <h2 style="margin-bottom: 2rem; text-align: center; color: var(--dark-gray); font-weight: 300; letter-spacing: 2px;">CHECKOUT</h2>
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--rose-gold);">Shipping Details</h3>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label for="checkoutName">Full Name</label>
+                            <input type="text" id="checkoutName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutEmail">Email</label>
+                            <input type="email" id="checkoutEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutPhone">Phone Number</label>
+                            <input type="tel" id="checkoutPhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutAddress">Street Address</label>
+                            <input type="text" id="checkoutAddress" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutCity">City</label>
+                            <input type="text" id="checkoutCity" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutParish">Parish</label>
+                            <select id="checkoutParish" name="parish" required>
+                                <option value="">Select Parish</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                            </select>
+                        </div>
+                        
+                        <h3 style="margin: 2rem 0 1.5rem 0; color: var(--rose-gold);">Payment Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" name="cardName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkoutAmount">Amount Being Paid (JMD)</label>
+                            <input type="number" id="checkoutAmount" name="amount" readonly>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="showPage('cart')">Cancel</button>
+                            <button type="submit" class="btn">Confirm Order</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="checkout-summary">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--rose-gold);">Order Summary</h3>
+                    <div id="checkoutSummary">
+                     
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Invoice Page -->
+        <section id="invoice" class="page-section">
+            <div class="invoice-container">
+                <div class="invoice-header">
+                    <h2>INVOICE</h2>
+                    <p style="color: var(--gray); margin-top: 0.5rem;">Scented Luxe - Lattafa Women's Fragrances</p>
+                </div>
+                <div class="invoice-details">
+                    <div class="invoice-section">
+                        <h3>Invoice Details</h3>
+                        <p><strong>Invoice Number:</strong> <span id="invoiceNumber">INV-001</span></p>
+                        <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
+                        <p><strong>Payment Status:</strong> <span style="color: green;">Paid</span></p>
+                    </div>
+                    <div class="invoice-section">
+                        <h3>Customer Information</h3>
+                        <p id="customerInfo">
+                           
+                        </p>
+                    </div>
+                </div>
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoiceItems">
+                        
+                    </tbody>
+                </table>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="invoiceSubtotal">JMD $0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Discount (10%):</span>
+                        <span id="invoiceDiscount">-JMD $0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (15% GCT):</span>
+                        <span id="invoiceTax">JMD $0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Amount:</span>
+                        <span id="invoiceTotal">JMD $0.00</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn" onclick="window.print()">Print Invoice</button>
+                    <button class="btn btn-secondary" onclick="showPage('home')" style="margin-left: 1rem;">Return Home</button>
+                </div>
+            </div>
+        </section>
+
+        <!<!-- About Page -->
+<section id="about" class="page-section">
+    <div class="about-container">
+        <h2>ABOUT US</h2>
+        
+        <div class="student-info">
+            <p><strong>Full Name:</strong> Dejaunae Clue</p>
+            <p><strong>Student ID:</strong> 2304199</p>
+            <p><strong>Email:</strong> <a href="mailto:2304199@utech.edu.jm">2304199@utech.edu.jm</a></p>
+            <p><strong>Module Code:</strong> CIT2011</p>
+            <p><strong>Assignment:</strong> E-Commerce Website Project</p>
+            <p><strong>Class Day/Time:</strong> Fridayy/12PM</p>
+        </div>
+
+        <div class="contact-info" style="margin-top: 2rem; padding: 2rem; background: var(--cream); border-radius: 8px;">
+            <h3 style="color: var(--rose-gold); margin-bottom: 1rem;">Contact Us</h3>
+            <p>Have questions or comments about our products?</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:2304199@utech.edu.jm" class="btn">Send us an Email</a>
+            </p>
+        </div>
+    </div>
+</section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2025 Scented Luxe. All rights reserved.</p>
+        <p class="footer-gold">Lattafa Women's Fragrances</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
